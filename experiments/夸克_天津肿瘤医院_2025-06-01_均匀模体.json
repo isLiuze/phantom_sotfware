@@ -1,0 +1,157 @@
+{
+  "id": "17b22242-2b9b-45c9-84f3-68a10f0031f7",
+  "name": "夸克",
+  "center": "天津肿瘤医院",
+  "date": "2025-06-01",
+  "model_type": "均匀模体",
+  "created_at": "2025-06-01T00:00:00",
+  "parameters": {
+    "isotope": "Lu-177",
+    "volume": 23.0,
+    "target_activity": 1.0,
+    "machine_time_diff": 8.0,
+    "device_model": "United Imaging uEXPLORER",
+    "remark": "",
+    "syringes": [
+      {
+        "name": "分针1",
+        "activities": {
+          "本底活度": {
+            "value": 0.21,
+            "time": "2025/06/02-10:08:18"
+          },
+          "注射分针活度": {
+            "value": 0.32432432432432434,
+            "time": "2025/06/02-10:08:18"
+          },
+          "残余针活度": {
+            "value": 0.02702702702702703,
+            "time": "2025/06/02-10:08:18"
+          },
+          "残余本底活度": {
+            "value": 0.02702702702702703,
+            "time": "2025/06/02-10:08:18"
+          }
+        },
+        "actual_activity": 0.11432432432432434
+      },
+      {
+        "name": "分针2",
+        "activities": {
+          "本底活度": {
+            "value": 0.0,
+            "time": ""
+          },
+          "注射分针活度": {
+            "value": 0.0,
+            "time": ""
+          },
+          "残余针活度": {
+            "value": 0.0,
+            "time": ""
+          },
+          "残余本底活度": {
+            "value": 0.0,
+            "time": ""
+          }
+        },
+        "actual_activity": 0.0
+      }
+    ],
+    "actual_activity": 13.43,
+    "activity_unit": "mCi",
+    "scan_time": "2025-06-16T20:36:48.218480+08:00",
+    "total_activity": 0.39815685096703884,
+    "actual_activity_time": "2025/06/02-11:01:18",
+    "calculated_scan_time": "2025/06/02-15:15:08",
+    "phantom_analysis": {
+      "analysis_type": "Uniform",
+      "roi_settings": {
+        "center_x": 128,
+        "center_y": 128,
+        "radius": 50,
+        "background_radius": 80
+      },
+      "sphere_settings": {
+        "hot_sphere_ratio": 4.0
+      },
+      "uniformity_settings": {
+        "threshold": 0.1,
+        "include_edges": false
+      },
+      "export_settings": {
+        "include_images": true,
+        "include_statistics": true,
+        "format": "Excel"
+      }
+    },
+    "activity_preset_data": {
+      "phantom_type": "NEMA-IQ空腔",
+      "scan_activity": "11",
+      "unit": "mCi",
+      "table_data": [
+        {
+          "col_0": "0",
+          "col_1": "扫描时刻",
+          "col_2": "11.0000",
+          "col_3": "mCi",
+          "col_4": "浓度: 1.12 kBq/mL",
+          "col_5": "✓ 已计算"
+        },
+        {
+          "col_0": "30",
+          "col_1": "扫描前30分钟",
+          "col_2": "11.9778",
+          "col_3": "mCi",
+          "col_4": "浓度: 1.22 kBq/mL",
+          "col_5": "✓ 已计算"
+        },
+        {
+          "col_0": "60",
+          "col_1": "扫描前60分钟",
+          "col_2": "13.4444",
+          "col_3": "mCi",
+          "col_4": "浓度: 1.37 kBq/mL",
+          "col_5": "✓ 已计算"
+        },
+        {
+          "col_0": "90",
+          "col_1": "扫描前90分钟",
+          "col_2": "15.2044",
+          "col_3": "mCi",
+          "col_4": "浓度: 1.55 kBq/mL",
+          "col_5": "✓ 已计算"
+        },
+        {
+          "col_0": "110",
+          "col_1": "扫描前110分钟",
+          "col_2": "16.7200",
+          "col_3": "mCi",
+          "col_4": "浓度: 1.71 kBq/mL",
+          "col_5": "✓ 已计算"
+        },
+        {
+          "col_0": "150",
+          "col_1": "扫描前150分钟",
+          "col_2": "20.0933",
+          "col_3": "mCi",
+          "col_4": "浓度: 2.05 kBq/mL",
+          "col_5": "✓ 已计算"
+        }
+      ]
+    },
+    "sequence_rebuild": {
+      "input_dir": "",
+      "output_dir": "",
+      "frame_duration": 10,
+      "total_frames": 36,
+      "decay_correction": true,
+      "attenuation_correction": true,
+      "scatter_correction": true,
+      "random_correction": true,
+      "smoothing_filter": "Gaussian",
+      "iterations": 3,
+      "subsets": 16
+    }
+  }
+}

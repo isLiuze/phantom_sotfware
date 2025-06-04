@@ -1,0 +1,142 @@
+{
+  "id": "c1b0c7d8-e82b-4cfe-b5fc-84f6aa71344e",
+  "name": "夸克-CNDG7-2232",
+  "center": "天津肿瘤医院",
+  "date": "2025-05-31",
+  "model_type": "NEMA模体",
+  "created_at": "2025-05-31T00:00:00",
+  "parameters": {
+    "isotope": "Lu-177",
+    "activity_unit": "MBq",
+    "syringes": [
+      {
+        "name": "背景活度",
+        "activities": {
+          "本底活度": {
+            "value": 1.0,
+            "time": ""
+          },
+          "注射分针活度": {
+            "value": 0.0,
+            "time": ""
+          },
+          "残余针活度": {
+            "value": 0.0,
+            "time": ""
+          },
+          "残余本底活度": {
+            "value": 0.0,
+            "time": ""
+          }
+        },
+        "actual_activity": 0.0
+      },
+      {
+        "name": "分针4",
+        "activities": {
+          "本底活度": {
+            "value": 0.0,
+            "time": ""
+          },
+          "注射分针活度": {
+            "value": 0.0,
+            "time": ""
+          },
+          "残余针活度": {
+            "value": 0.0,
+            "time": ""
+          },
+          "残余本底活度": {
+            "value": 0.0,
+            "time": ""
+          }
+        },
+        "actual_activity": 0.0
+      }
+    ],
+    "volume": 1.0,
+    "target_activity": 4.808584372417848e+18,
+    "actual_activity": 148.0,
+    "machine_time_diff": 0.0,
+    "device_model": "Siemens Biograph mCT",
+    "remark": "4:1",
+    "scan_time": "2025/06/02-00:17:05",
+    "actual_activity_time": "2025/06/02-00:17:05",
+    "phantom_analysis": {
+      "analysis_type": "Uniform",
+      "roi_settings": {
+        "center_x": 128,
+        "center_y": 128,
+        "radius": 50,
+        "background_radius": 80
+      },
+      "sphere_settings": {
+        "hot_sphere_ratio": 4.0
+      },
+      "uniformity_settings": {
+        "threshold": 0.1,
+        "include_edges": false
+      },
+      "export_settings": {
+        "include_images": true,
+        "include_statistics": true,
+        "format": "Excel"
+      }
+    },
+    "activity_preset_data": {
+      "phantom_type": "Uniform",
+      "scan_activity": "77",
+      "unit": "mCi",
+      "table_data": [
+        {
+          "col_0": "0",
+          "col_1": "扫描时刻",
+          "col_2": "101.178",
+          "col_3": "mCi",
+          "col_4": "基准时刻",
+          "col_5": "✓ 已计算"
+        },
+        {
+          "col_0": "20",
+          "col_1": "扫描前20分钟",
+          "col_2": "125.664",
+          "col_3": "mCi",
+          "col_4": "衰减系数: 1.632",
+          "col_5": "✓ 已计算"
+        },
+        {
+          "col_0": "40",
+          "col_1": "扫描前40分钟",
+          "col_2": "158.928",
+          "col_3": "mCi",
+          "col_4": "衰减系数: 2.064",
+          "col_5": "✓ 已计算"
+        },
+        {
+          "col_0": "60",
+          "col_1": "扫描前60分钟",
+          "col_2": "199.276",
+          "col_3": "mCi",
+          "col_4": "衰减系数: 2.588",
+          "col_5": "✓ 已计算"
+        },
+        {
+          "col_0": "90",
+          "col_1": "扫描前90分钟",
+          "col_2": "292.985",
+          "col_3": "mCi",
+          "col_4": "衰减系数: 3.805",
+          "col_5": "✓ 已计算"
+        },
+        {
+          "col_0": "110",
+          "col_1": "扫描前110分钟",
+          "col_2": "370.832",
+          "col_3": "mCi",
+          "col_4": "衰减系数: 4.816",
+          "col_5": "✓ 已计算"
+        }
+      ]
+    }
+  }
+}
