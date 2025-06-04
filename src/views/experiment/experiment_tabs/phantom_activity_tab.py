@@ -9,7 +9,7 @@ import pytz
 import logging
 import numpy as np
 
-logging.basicConfig(level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s")
+logger = logging.getLogger(__name__)
 
 class PhantomActivityTab(QWidget):
     def __init__(self, experiment, parent=None):
@@ -44,7 +44,7 @@ class PhantomActivityTab(QWidget):
             if hasattr(self.parent_widget, 'main_window') and hasattr(self.parent_widget.main_window, 'data_manager'):
                 self.parent_widget.main_window.data_manager.save_experiment(self.experiment)
         except Exception as e:
-            logging.error(f"保存实验失败: {e}")
+            logger.error(f"保存实验失败: {e}")
 
     def init_ui(self):
         """Initialize the UI layout."""
@@ -475,7 +475,7 @@ class PhantomActivityTab(QWidget):
             self._save_experiment()
             
         except Exception as e:
-            logging.error(f"计算总活度失败: {e}")
+            logger.error(f"计算总活度失败: {e}")
             QMessageBox.critical(self, "错误", f"计算总活度失败: {e}")
 
     def _refresh_syringe_widgets(self):
@@ -780,5 +780,5 @@ class PhantomActivityTab(QWidget):
             self.calculate_total_activity()
             
         except Exception as e:
-            logging.error(f"计算实际活度失败: {e}")
+            logger.error(f"计算实际活度失败: {e}")
             self.syringe_widgets[idx]["actual_display"].setText(f"计算错误") 

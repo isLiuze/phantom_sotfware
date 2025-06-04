@@ -18,11 +18,7 @@ from datetime import datetime, timedelta
 import pytz
 import numpy as np
 import logging
-
-logging.basicConfig(
-    level=logging.DEBUG,
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-)
+logger = logging.getLogger(__name__)
 
 
 class ExperimentWindow(QWidget):
@@ -51,7 +47,7 @@ class ExperimentWindow(QWidget):
         
         self._init_ui()
         self._start_timer()
-        logging.info(f"初始化实验窗口: 单位={self.activity_unit}")
+        logger.info(f"初始化实验窗口: 单位={self.activity_unit}")
 
     def _init_ui(self):
         # 整个窗口的主垂直布局
@@ -241,7 +237,7 @@ class ExperimentWindow(QWidget):
                 dt = datetime.fromtimestamp(time_str, pytz.timezone('Asia/Shanghai'))
                 return QDateTime(dt.year, dt.month, dt.day, dt.hour, dt.minute, dt.second)
         except (ValueError, OSError) as e:
-            logging.error(f"时间解析错误: {e}")
+            logger.error(f"时间解析错误: {e}")
             
         return None
 
@@ -254,7 +250,7 @@ class ExperimentWindow(QWidget):
                 # 发出更新信号
                 self.experiment_updated.emit(self.experiment)
         except Exception as e:
-            logging.error(f"保存实验失败: {e}")
+            logger.error(f"保存实验失败: {e}")
 
     def _start_timer(self):
         """启动定时器，每秒更新一次时间和活度"""
