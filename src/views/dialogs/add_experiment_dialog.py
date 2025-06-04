@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import (
-    QDialog, QVBoxLayout, QHBoxLayout, QLabel, 
+    QDialog, QVBoxLayout, QHBoxLayout, QLabel,
     QLineEdit, QPushButton, QComboBox, QTextEdit,
-    QFrame, QGridLayout
+    QFrame, QGridLayout, QMessageBox
 )
 from PyQt5.QtCore import Qt
 from ...utils.time_utils import get_current_beijing_time
@@ -124,4 +124,11 @@ class AddExperimentDialog(QDialog):
     
     def get_experiment_data(self):
         """返回用户输入的实验数据 - 与get_data方法保持一致"""
-        return self.get_data() 
+        return self.get_data()
+
+    def accept(self):
+        """验证必填字段后再关闭对话框"""
+        if not self.name_input.text().strip() or not self.center_input.text().strip():
+            QMessageBox.warning(self, "提示", "实验名称和中心名称为必填项")
+            return
+        super().accept()

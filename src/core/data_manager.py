@@ -7,7 +7,7 @@ import logging
 import re
 from src.models.entities.experiment import Experiment
 
-logging.basicConfig(level=logging.DEBUG, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s")
+logger = logging.getLogger(__name__)
 
 class DataManager:
     def __init__(self):
@@ -19,7 +19,7 @@ class DataManager:
         self.data_dir = os.path.join(project_root, "experiments")
         if not os.path.exists(self.data_dir):
             os.makedirs(self.data_dir)
-            logging.info(f"创建实验数据目录: {self.data_dir}")
+            logger.info(f"创建实验数据目录: {self.data_dir}")
 
     def _sanitize(self, text: str) -> str:
         """
@@ -38,14 +38,14 @@ class DataManager:
         """
         experiments = []
         pattern = os.path.join(self.data_dir, "*.json")
-        logging.info(f"加载 JSON 文件，模式: {pattern}")
+        logger.info(f"加载 JSON 文件，模式: {pattern}")
 
         for file_path in glob.glob(pattern):
             try:
                 with open(file_path, "r", encoding="utf-8") as f:
                     data = json.load(f)
             except Exception as e:
-                logging.error(f"读取或解析失败: {file_path}，错误: {e}")
+                logger.error(f"读取或解析失败: {file_path}，错误: {e}")
                 continue
 
             # 检查字段完整性（兼容新旧字段名）
@@ -56,21 +56,21 @@ class DataManager:
                 data["created_at"] = data["date"]
                 
             if not all(k in data for k in required_fields):
-                logging.warning(f"文件缺少必要字段，跳过: {file_path}")
+                logger.warning(f"文件缺少必要字段，跳过: {file_path}")
                 continue
 
             try:
                 exp = Experiment.from_dict(data)
             except Exception as e:
-                logging.error(f"Experiment.from_dict 失败: {file_path}，错误: {e}")
+                logger.error(f"Experiment.from_dict 失败: {file_path}，错误: {e}")
                 continue
 
             # 将文件路径记录在 Experiment 对象里
             exp._file_path = file_path
             experiments.append(exp)
-            logging.info(f"成功加载实验: {file_path}，name={exp.name}")
+            logger.info(f"成功加载实验: {file_path}，name={exp.name}")
 
-        logging.info(f"共加载 {len(experiments)} 个实验")
+        logger.info(f"共加载 {len(experiments)} 个实验")
         return experiments
 
     def save_experiment(self, experiment: Experiment) -> None:
@@ -85,9 +85,9 @@ class DataManager:
         if isinstance(old_path, str) and os.path.isfile(old_path):
             try:
                 os.remove(old_path)
-                logging.debug(f"删除旧实验文件: {old_path}")
+                logger.debug(f"删除旧实验文件: {old_path}")
             except Exception as e:
-                logging.error(f"删除旧文件失败: {old_path}，错误: {e}")
+                logger.error(f"删除旧文件失败: {old_path}，错误: {e}")
 
         # 2. 构造新文件名基础
         date_str = experiment.date if hasattr(experiment, 'date') else str(experiment.created_at)[:10]
@@ -112,11 +112,11 @@ class DataManager:
         try:
             with open(full_path, "w", encoding="utf-8") as f:
                 json.dump(payload, f, ensure_ascii=False, indent=2)
-            logging.info(f"保存实验: {full_path}")
+            logger.info(f"保存实验: {full_path}")
             # 更新 experiment._file_path
             experiment._file_path = full_path
         except Exception as e:
-            logging.error(f"保存失败: {full_path}，错误: {e}")
+            logger.error(f"保存失败: {full_path}，错误: {e}")
             raise
 
     def delete_experiment(self, experiment: Experiment) -> None:
@@ -128,12 +128,12 @@ class DataManager:
         if isinstance(path, str) and os.path.isfile(path):
             try:
                 os.remove(path)
-                logging.info(f"已删除实验文件: {path}")
+                logger.info(f"已删除实验文件: {path}")
             except Exception as e:
-                logging.error(f"删除文件失败: {path}，错误: {e}")
+                logger.error(f"删除文件失败: {path}，错误: {e}")
                 raise
         else:
-            logging.warning(f"无法删除: 找不到 experiment._file_path={path}")
+            logger.warning(f"无法删除: 找不到 experiment._file_path={path}")
 
     def save_all_data(self, experiments=None):
         """保存所有实验数据"""
@@ -145,7 +145,7 @@ class DataManager:
             try:
                 self.save_experiment(experiment)
             except Exception as e:
-                logging.error(f"保存实验失败 {experiment.name}: {e}")
+                logger.error(f"保存实验失败 {experiment.name}: {e}")
 
     def get_experiments(self):
         """获取所有实验数据"""
